@@ -184,6 +184,7 @@ func (r *CronJobReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		}
 	}
 
+	// deleting successful jobs
 	if cronJob.Spec.SuccessfulJobsHistoryLimit != nil {
 		sort.Slice(successfulJobs, func(i, j int) bool {
 			if successfulJobs[j].Status.StartTime == nil {
